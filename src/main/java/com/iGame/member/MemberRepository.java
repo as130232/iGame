@@ -12,6 +12,6 @@ public interface MemberRepository extends CrudRepository<Member, Integer>{
 	
 	public List<Member> findAll();
 	
-	public Member findByName(String name);;
+	public Member findByMemberName(String memberName);
 	
 }

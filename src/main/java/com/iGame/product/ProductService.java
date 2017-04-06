@@ -12,8 +12,8 @@ public class ProductService {
 	private ProductRepository productRepository;
 	
 	
-	public Product getProduct(String id){
-		return productRepository.findOne(id);
+	public Product getProduct(Integer productId){
+		return productRepository.findOne(productId);
 	}
 	
 	public List<Product> getAllProducts(){
@@ -26,12 +26,12 @@ public class ProductService {
 		productRepository.save(product);
 	}
 	
-	public void updateProduct(String id, Product product){
+	public void updateProduct(Integer productId, Product product){
 		productRepository.save(product);
 	}
 	
-	public void deleteProduct(String id){
-		productRepository.delete(id);
+	public void deleteProduct(Integer productId){
+		productRepository.delete(productId);
 	}
 	
 	

@@ -15,9 +15,9 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
-	@RequestMapping("/product/{id}")
-	public Product getMember(@PathVariable String id){
-		return productService.getProduct(id);
+	@RequestMapping("/product/{productId}")
+	public Product getProduct(@PathVariable Integer productId){
+		return productService.getProduct(productId);
 	}
 	
 	@RequestMapping("/products")
@@ -30,13 +30,13 @@ public class ProductController {
 		productService.addProduct(product);
 	}
 	
-	@RequestMapping(value = "/product/{id}", method=RequestMethod.PUT)
-	public void updateProduct(@RequestBody Product product, @PathVariable String id){
-		productService.updateProduct(id, product);
+	@RequestMapping(value = "/product/{productId}", method=RequestMethod.PUT)
+	public void updateProduct(@RequestBody Product product, @PathVariable Integer productId){
+		productService.updateProduct(productId, product);
 	}
 	
-	@RequestMapping(value = "/product/{id}", method=RequestMethod.DELETE)
-	public void deleteProduct(@PathVariable String id){
-		productService.deleteProduct(id);
+	@RequestMapping(value = "/product/{productId}", method=RequestMethod.DELETE)
+	public void deleteProduct(@PathVariable Integer productId){
+		productService.deleteProduct(productId);
 	}
 }

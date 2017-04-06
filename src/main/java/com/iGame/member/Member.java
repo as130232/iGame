@@ -10,45 +10,47 @@ import com.iGame.product.Product;
 
 @Entity
 public class Member {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer memberId;
-	private String name;
-	private String password;
+	private String memberName;
 	private String email;
-	
-	@OneToMany
-	private Product product;
+	private String password;
 	
 	public Member(){	
 	}
 	
-	public Member(String name, String password, String email) {
+	public Member(Integer memberId, String name, String password, String email) {
 		super();
-		this.name = name;
+		this.memberId = memberId;
+		this.memberName = name;
 		this.password = password;
 		this.email = email;
 	}
 
-	@Override
-	public String toString() {
-		return "Member [id=" + memberId + ", name=" + name + ", password=" + password + ", email=" + email + "]";
-	}
-
-	public Integer getId() {
+	public Integer getMemberId() {
 		return memberId;
 	}
 
-	public void setId(Integer id) {
-		this.memberId = id;
+	public void setMemberId(Integer memberId) {
+		this.memberId = memberId;
 	}
 
-	public String getName() {
-		return name;
+	public String getMemberName() {
+		return memberName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -59,12 +61,6 @@ public class Member {
 		this.password = password;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
+	
 	
 }

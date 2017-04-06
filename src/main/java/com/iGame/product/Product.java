@@ -1,15 +1,17 @@
 package com.iGame.product;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
+@Entity
 public class Product {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private String id;
-	private String name;
+	private Integer productId;
+	private String productName;
 	private String type;
 	private Integer price;
 	private String imgSrc;
@@ -17,29 +19,29 @@ public class Product {
 	public Product(){
 	}
 
-	public Product(String id, String name, String type, Integer price, String imgSrc) {
+	public Product(Integer productId, String productName, String type, Integer price, String imgSrc) {
 		super();
-		this.id = id;
-		this.name = name;
+		this.productId = productId;
+		this.productName = productName;
 		this.type = type;
 		this.price = price;
 		this.imgSrc = imgSrc;
 	}
 
-	public String getId() {
-		return id;
+	public Integer getProductId() {
+		return productId;
 	}
 
-	public void setId(String id) {
-		this.id = id;
+	public void setProductId(Integer productId) {
+		this.productId = productId;
 	}
 
-	public String getName() {
-		return name;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
 	public String getType() {
@@ -65,7 +67,5 @@ public class Product {
 	public void setImgSrc(String imgSrc) {
 		this.imgSrc = imgSrc;
 	}
-	
-	
-	
+
 }
