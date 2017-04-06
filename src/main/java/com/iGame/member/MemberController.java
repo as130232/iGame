@@ -24,7 +24,6 @@ public class MemberController {
 	
 	@RequestMapping("/members")
 	public List<Member> getAllMembers() {
-		System.out.println("**************");
 		Long memberCount = memberService.getAllMembers().stream().count();
 		System.out.println("memberCount:" + memberCount);
 		return memberService.getAllMembers();
