@@ -1,9 +1,16 @@
 package com.iGame.product;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.iGame.productOrder.ProductOrder;
 
 @Entity
 public class Product {
@@ -12,20 +19,29 @@ public class Product {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer productId;
 	private String productName;
-	private String type;
+	private Integer type;
 	private Integer price;
 	private String imgSrc;
+	
+	@OneToMany(mappedBy = "product", cascade = CascadeType.ALL)
+	@JsonManagedReference(value="product-productOrder")
+	private List<ProductOrder> productOrder;
 	
 	public Product(){
 	}
 
-	public Product(Integer productId, String productName, String type, Integer price, String imgSrc) {
+	public Product(Integer productId, String productName, Integer type, Integer price, String imgSrc) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
 		this.type = type;
 		this.price = price;
 		this.imgSrc = imgSrc;
+	}
+
+	public Product(Integer productId) {
+		super();
+		this.productId = productId;
 	}
 
 	public Integer getProductId() {
@@ -44,11 +60,11 @@ public class Product {
 		this.productName = productName;
 	}
 
-	public String getType() {
+	public Integer getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(Integer type) {
 		this.type = type;
 	}
 
@@ -66,6 +82,15 @@ public class Product {
 
 	public void setImgSrc(String imgSrc) {
 		this.imgSrc = imgSrc;
+	}
+
+	
+	public List<ProductOrder> getProductOrder() {
+		return productOrder;
+	}
+
+	public void setProductOrder(List<ProductOrder> productOrder) {
+		this.productOrder = productOrder;
 	}
 
 }

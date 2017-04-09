@@ -1,12 +1,17 @@
 package com.iGame.member;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.iGame.product.Product;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.iGame.productOrder.ProductOrder;
 
 @Entity
 public class Member {
@@ -18,6 +23,11 @@ public class Member {
 	private String email;
 	private String password;
 	
+	@OneToMany(mappedBy = "member", cascade = CascadeType.ALL)
+	@JsonManagedReference(value="member-productOrder")
+	private List<ProductOrder> productOrder;
+	
+	
 	public Member(){	
 	}
 	
@@ -27,6 +37,11 @@ public class Member {
 		this.memberName = name;
 		this.password = password;
 		this.email = email;
+	}
+
+	public Member(Integer memberId) {
+		super();
+		this.memberId = memberId;
 	}
 
 	public Integer getMemberId() {
@@ -59,6 +74,14 @@ public class Member {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<ProductOrder> getProductOrder() {
+		return productOrder;
+	}
+
+	public void setProductOrder(List<ProductOrder> productOrder) {
+		this.productOrder = productOrder;
 	}
 
 	
