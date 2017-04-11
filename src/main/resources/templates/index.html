@@ -1,10 +1,16 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta  http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Insert title here</title>
 </head>
 <body>
-<p>Hello! Charles.
+	<div>
+		<span sec:authentication="name"/> has <span sec:authentication="authorities"/>
+		<form method="post" th:action="@{/logout}">
+			<input type="submit" value="sign off" />
+		</form>
+	</div>
+	<p>Hello! QQCharles.</p>
 </body>
 </html>

@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.iGame.member.Member;
 import com.iGame.product.Product;
+import com.iGame.user.User;
 
 @RestController
 @RequestMapping
@@ -30,9 +30,9 @@ public class ProductOrderController {
 		return productService.getAllProductOrders();
 	}
 	
-	@RequestMapping(value = "/productOrder/{memberId}/{productId}", method=RequestMethod.POST)
-	public void addProductOrder(@RequestBody ProductOrder productOrder,@PathVariable Integer memberId,@PathVariable Integer productId){
-		productOrder.setMember(new Member(memberId));
+	@RequestMapping(value = "/productOrder/{userId}/{productId}", method=RequestMethod.POST)
+	public void addProductOrder(@RequestBody ProductOrder productOrder, @PathVariable Integer userId, @PathVariable Integer productId){
+		productOrder.setUser(new User(userId));
 		productOrder.setProduct(new Product(productId));
 		productOrder.setPurchaseDate(new Date());
 		productService.addProductOrder(productOrder);

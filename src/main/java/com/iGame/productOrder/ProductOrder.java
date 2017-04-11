@@ -11,8 +11,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.iGame.member.Member;
 import com.iGame.product.Product;
+import com.iGame.user.User;
 
 @Entity
 public class ProductOrder {
@@ -21,19 +21,19 @@ public class ProductOrder {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Integer productOrderId;
 	
-	@Transient
-	private Integer memberId;
-	@Transient
-	private Integer productId;
+//	@Transient
+//	private Integer userId;
+//	@Transient
+//	private Integer productId;
 	
 	private Integer usePrice;
 
 	private Date purchaseDate;
 	
 	@ManyToOne
-	@JoinColumn(name = "member_id")
-	@JsonBackReference(value="member-productOrder")
-	private Member member;
+	@JoinColumn(name = "user_id")
+	@JsonBackReference(value="user-productOrder")
+	private User user;
 	
 	
 	@ManyToOne
@@ -45,14 +45,13 @@ public class ProductOrder {
 	public ProductOrder(){	
 	}
 
-	public ProductOrder(Integer productOrderId, Integer usePrice, Integer memberId, Integer productId,
+	public ProductOrder(Integer productOrderId, Integer usePrice, Integer userId, Integer productId,
 			Date purchaseDate) {
 		super();
 		this.productOrderId = productOrderId;
 		this.usePrice = usePrice;
 		this.purchaseDate = purchaseDate;
-		
-		this.member = new Member(memberId, "", "", "");
+		this.user = new User(userId, "", "", "");
 		this.product = new Product(productId, "", null, null, "");
 	}
 
@@ -80,12 +79,12 @@ public class ProductOrder {
 		this.purchaseDate = purchaseDate;
 	}
 
-	public Member getMember() {
-		return member;
+	public User getUser() {
+		return user;
 	}
 
-	public void setMember(Member member) {
-		this.member = member;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public Product getProduct() {
@@ -96,23 +95,23 @@ public class ProductOrder {
 		this.product = product;
 	}
 	
-	
-	public Integer getMemberId() {
-		return this.member.getMemberId();
-	}
-
-	public void setMemberId(Integer memberId) {
-		this.member.setMemberId(memberId);
-	}
-
-	public Integer getProductId() {
-		return this.product.getProductId();
-	}
-
-	public void setProductId(Integer productId) {
-		this.product.setProductId(productId);
-	}
-	
+//	
+//	public Integer getUserId() {
+//		return this.user.getUserId();
+//	}
+//
+//	public void setUserId(Integer userId) {
+//		this.user.setUserId(userId);
+//	}
+//
+//	public Integer getProductId() {
+//		return this.product.getProductId();
+//	}
+//
+//	public void setProductId(Integer productId) {
+//		this.product.setProductId(productId);
+//	}
+//	
 	
 	
 	
