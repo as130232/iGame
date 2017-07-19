@@ -26,8 +26,24 @@
 
 	<dependencies>
 		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 
 		<dependency>
@@ -37,23 +53,23 @@
 			<!-- 可替換較輕量級的jetty <artifactId>spring-boot-starter-jetty</artifactId> -->
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-thymeleaf</artifactId>
-		</dependency>
-
-
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+			<version>4.12</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>1.9.5</version>
+		</dependency>
+
 		<!-- 健康(遠端)監控，可遠端關閉web App -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -63,34 +79,56 @@
 		<!-- 圖形介面監控，Tomcat啟動時會產生一組 default password for shell access序號，開啟JConsole(Username:user) 
 			<dependency> <groupId>org.springframework.boot</groupId> <artifactId>spring-boot-starter-remote-shell</artifactId> 
 			</dependency> -->
-<!-- 
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
--->
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-websocket</artifactId>
+		</dependency>
+
+
+		<!-- 暫存作為登入失敗將 嘗試登入失敗多次後的ip， 加入 block list 中一段時間，避免攻擊者可以無限次數的重複嘗試登入密碼。 -->
+		<dependency>
 			<groupId>com.google.guava</groupId>
 			<artifactId>guava</artifactId>
 			<version>18.0</version>
 		</dependency>
 
+		<!-- 個跨平台的檔案加密，密碼存到 db 前要 hash 過，並且挑選專門用來 hash 密碼的演算法，如 bcrypt -->
+		<dependency>
+			<groupId>org.mindrot</groupId>
+			<artifactId>jbcrypt</artifactId>
+			<version>0.3m</version>
+		</dependency>
 
 		<!-- WebJars -->
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>bootstrap</artifactId>
-			<version>3.3.6</version>
+			<version>3.3.7-1</version>
 		</dependency>
 		<dependency>
 			<groupId>org.webjars</groupId>
 			<artifactId>jquery</artifactId>
-			<version>2.1.4</version>
+			<version>3.1.1</version>
+		</dependency>
+
+		<!-- 省略版本前端靜態資源的版本號 -->
+		<!-- ex: <script src="/webjars/jquery/3.1.1/jquery.min.js"></script> → 
+			<script src="/webjars/jquery/jquery.min.js"></script> -->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>webjars-locator</artifactId>
+			<version>0.31</version>
 		</dependency>
 
 	</dependencies>

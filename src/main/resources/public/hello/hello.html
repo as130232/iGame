@@ -1,24 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Insert title here</title>
+<title>Hello Page</title>
 
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<title>WebJars Demo</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+
+<script src="js/hello.js"></script>
+
 </head>
 <body>
-	<div>
-		<span sec:authentication="name"/> has <span sec:authentication="authorities"/>
-		<form method="post" th:action="@{/logout}">
-			<input type="submit" value="sign off" />
-		</form>
-	</div>
-	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-	<p>Homepage.Hello! QQCharles.</p>
-	
+	Here's what our Helloween service is saying to you:
+    <div id="helloweenMessage"></div>
+
+
 	<div class="container">
 		<br />
 		<div class="alert alert-success">
@@ -26,5 +23,6 @@
 			Hello, <strong>WebJars!</strong>
 		</div>
 	</div>
+	
 </body>
 </html>

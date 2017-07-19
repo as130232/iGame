@@ -1,23 +1,22 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Insert title here</title>
+<title>Login Page</title>
 
 <script src="/webjars/jquery/jquery.min.js"></script>
 <script src="/webjars/bootstrap/js/bootstrap.min.js"></script>
-<title>WebJars Demo</title>
 <link rel="stylesheet" href="/webjars/bootstrap/css/bootstrap.min.css" />
+
+<script src="js/login.js"></script>
+
 </head>
 <body>
-	<div>
-		<span sec:authentication="name"/> has <span sec:authentication="authorities"/>
-		<form method="post" th:action="@{/logout}">
-			<input type="submit" value="sign off" />
-		</form>
-	</div>
-	<h1 th:inline="text">Hello [[${#httpServletRequest.remoteUser}]]!</h1>
-	<p>Homepage.Hello! QQCharles.</p>
+	<form id="loginform" name="loginform" method="post">
+		<label for="username">Username: </label><input type="text" id="username" name="username"><br/> 
+		<label for="password">Password:</label><input type="password" id="password" name="password"><br/>
+		<button type="submit">Login!</button>
+	</form>
 	
 	<div class="container">
 		<br />
